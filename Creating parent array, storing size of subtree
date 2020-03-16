@@ -9,6 +9,7 @@ using namespace std;
 vector<int> adj[max];
 unordered_map<int,int> visited;
 int arr[max+2]={0};
+/* for b int arr[max+2]; */
 
 void addEdge(int u, int v) 
 { 
@@ -18,17 +19,20 @@ void addEdge(int u, int v)
 
 void DFSUtil(int v){
     visited[v] = 1; 
-    // cout << v << " "<<adj[v].size()<<"\n"; 
-  
-    // Recur for all the vertices adjacent to this vertex 
-    // list<int>::iterator i; 
+    /* for b  arr[v]=1; */
     for(int i = 0; i < adj[v].size(); i++) {
         cout<<"child : "<<adj[v][i]<<endl;
         // visited[adj[v][i]]=1;
         if(visited[adj[v][i]]==0) {
             
-            arr[adj[v][i]]=v;
+      /* for a:
+      arr[adj[v][i]]=v;
              DFSUtil(adj[v][i]); 
+        */
+        /* for b
+                DFSUtil(adj[v][i]); 
+             arr[v]+=arr[adj[v][i]];
+         */
         }
            
     }
