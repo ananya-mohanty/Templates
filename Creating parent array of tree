@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define pb push_back
+#define max 100005
+#define ll long long int
+// #define INT_MIN -99
+vector<int> adj[max];
+unordered_map<int,int> visited;
+int arr[max+2]={0};
+
+void addEdge(int u, int v) 
+{ 
+    adj[u].push_back(v); 
+    adj[v].push_back(u); 
+} 
+
+void DFSUtil(int v){
+    visited[v] = 1; 
+    // cout << v << " "<<adj[v].size()<<"\n"; 
+  
+    // Recur for all the vertices adjacent to this vertex 
+    // list<int>::iterator i; 
+    for(int i = 0; i < adj[v].size(); i++) {
+        cout<<"child : "<<adj[v][i]<<endl;
+        // visited[adj[v][i]]=1;
+        if(visited[adj[v][i]]==0) {
+            
+            arr[adj[v][i]]=v;
+             DFSUtil(adj[v][i]); 
+        }
+           
+    }
+        
+}
+
+void run()
+{
+    int n, m,a,b;
+    cin>>n>>m;
+    visited.clear();
+    
+    for(int i=0; i<m; i++){
+        cin>>a>>b;
+        addEdge(a,b);
+        
+    }
+    
+    for(int i=1; i<=n; i++){
+        
+       if(visited[i]==0){
+            // visited[i]=1;
+            DFSUtil(i);
+       }
+       
+    }
+    
+    for(int i=1; i<=n; i++){
+        cout<<arr[i]<<" ";
+    }
+    
+    // cout<<maxEdges(m);
+    
+}
+
+int main()
+{
+    ll t=1;
+    // cin>>t;
+    while(t--)
+    {
+        run();
+        
+    }
+    
+    
+}
