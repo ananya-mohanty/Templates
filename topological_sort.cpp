@@ -1,6 +1,5 @@
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define pb push_back
@@ -24,13 +23,12 @@ void addEdge(int u, int v)
 vector<int> topological_sorting() 
 { 
     queue<int> q; 
-  
-    // insert all vertices which 
-    // don't have any parent. 
-    for (int i = 0; i < n; i++){
+    
+    for (int i = 0; i < n; i++)
+    {
         if (!fre[i]) 
             q.push(i); 
-        // cout<<"sfbj";
+       
     } 
         
   
